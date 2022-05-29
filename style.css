@@ -5,8 +5,9 @@
   
   .grid {
     border: 0.1px solid black;
-    flex: 1 0 6.25%;
-    height: 50px;
+    flex: 1 0 1;
+    width: 6.25%;
+    padding-bottom: 6.25%;
   }
   
   .grid:hover {

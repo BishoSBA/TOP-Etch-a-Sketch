@@ -32,12 +32,15 @@ function reGrid(size) {
 		div.remove();
 	}
 
+	let width = 100 / size;
+
 	for (let i = 0; i < size; i++) {
 		grid[i] = [];
 		for (let j = 0; j < size; j++) {
 			grid[i].push(document.createElement("div"));
 			grid[i][j].classList.add("grid");
-			grid[i][j].style.flexBasis = 1 / size;
+			grid[i][j].style.width = `${width}%`;
+			grid[i][j].style.paddingBottom = `${width}%`;
 			container.append(grid[i][j]);
 		}
 	}
