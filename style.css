@@ -1,3 +1,7 @@
+body {
+  margin: 3%;
+}
+
 .container {
     display: flex;
     flex-wrap: wrap;
@@ -14,3 +18,13 @@
     background-color: black;
   }
   
+  button {
+    padding: 1em 4em;
+    justify-self: center;
+    margin-bottom: 2em;
+  }
+
+  .start {
+    display: flex;
+    justify-content: center;
+  }

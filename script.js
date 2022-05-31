@@ -5,7 +5,7 @@ let defaultSize = 16;
 
 drawGrid(defaultSize);
 
-const btn = document.querySelector(".start");
+const btn = document.querySelector("button");
 btn.addEventListener("click", chooseSize);
 
 // prompts the user for a size number for the grid whe button is pressed
@@ -14,7 +14,7 @@ function chooseSize() {
 	do {
 		size = window.prompt("Choose the size of the grid 1-100", 16);
 		size = parseInt(size);
-	} while (size >= 100 || size <= 0);
+	} while (size >= 100 || size <= 0 || !Number.isInteger(size));
 
 	drawGrid(size);
 }
@@ -39,12 +39,20 @@ function drawGrid(size) {
 		grid[i] = [];
 		for (let j = 0; j < size; j++) {
 			grid[i].push(document.createElement("div"));
-			grid[i][j].style.backgroundColor = randomColor();
 			grid[i][j].classList.add("grid");
-			//console.log(randomColor());
+			grid[i][j].addEventListener("mouseenter", changeColor);
+			grid[i][j].addEventListener("mouseout", drawBlack);
 			grid[i][j].style.width = `${width}%`;
 			grid[i][j].style.paddingBottom = `${width}%`;
 			container.append(grid[i][j]);
 		}
 	}
+}
+
+function changeColor() {
+	this.style.backgroundColor = randomColor();
+}
+
+function drawBlack() {
+	this.style.backgroundColor = "black";
 }
