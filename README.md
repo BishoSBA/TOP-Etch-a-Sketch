@@ -1,6 +1,6 @@
 # TOP-Etch-a-Sketch
 TOP PROJECT: [ETCH-A-SKETCH](https://bishosba.github.io/TOP-Etch-a-Sketch/)
-
+(TOP stands for [The Odin Project](https:www.theodinproject) which is a self-paced fullstack course. I am going through it to supplement my CS university education with practical skills.)
 
 A grid that starts as 16x16 where the the cell that the mouse hovers over turns to a random color, and as soon as it passes over it, turns to black.
 With the ability to change the size of the grid upto 100x100 as small as 1x1 (not recommended as its boring).
