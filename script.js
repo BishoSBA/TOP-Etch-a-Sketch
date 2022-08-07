@@ -1,22 +1,23 @@
-const container = document.querySelector(".container");
+const container = document.querySelector(".grid-container");
+const slider = document.querySelector("input[type=range]");
+const colorPicker = document.querySelector("input[type=color");
+const label = document.querySelector("label");
+const defaultSize = 16;
 
 let grid = [];
-let defaultSize = 16;
+let color = "black";
+let mode = "color";
 
 drawGrid(defaultSize);
 
-const btn = document.querySelector("button");
-btn.addEventListener("click", chooseSize);
+slider.addEventListener("input", (e) => updateSlider(e.target.value));
+slider.addEventListener("change", (e) => drawGrid(e.target.value));
 
-// prompts the user for a size number for the grid whe button is pressed
-function chooseSize() {
-	let size = defaultSize;
-	do {
-		size = window.prompt("Choose the size of the grid 1-100", 16);
-		size = parseInt(size);
-	} while (size >= 100 || size <= 0 || !Number.isInteger(size));
+colorPicker.addEventListener("input", (e) => (color = e.target.value));
 
-	drawGrid(size);
+//Displays updated size of the board
+function updateSlider(val) {
+	label.innerHTML = `${val} x ${val}`;
 }
 
 // Generates random hex color value
@@ -40,8 +41,9 @@ function drawGrid(size) {
 		for (let j = 0; j < size; j++) {
 			grid[i].push(document.createElement("div"));
 			grid[i][j].classList.add("grid");
-			grid[i][j].addEventListener("mouseenter", changeColor);
-			grid[i][j].addEventListener("mouseout", drawBlack);
+			grid[i][j].addEventListener("mouseenter", (e) => {
+				drawColor(e);
+			});
 			grid[i][j].style.width = `${width}%`;
 			grid[i][j].style.paddingBottom = `${width}%`;
 			container.append(grid[i][j]);
@@ -49,10 +51,24 @@ function drawGrid(size) {
 	}
 }
 
-function changeColor() {
-	this.style.backgroundColor = randomColor();
+function changeColor(e) {
+	if (e.buttons == 0) return;
+	e.target.style.backgroundColor = randomColor();
 }
 
-function drawBlack() {
-	this.style.backgroundColor = "black";
+function drawColor(e) {
+	if (e.buttons == 0) return;
+	e.target.style.backgroundColor = color;
+}
+
+function draw(e) {
+	if (e.buttons == 0) return;
+
+	if (mode == "color") {
+		e.target.style.backgroundColor = color;
+	} else if (mode == "rainbow") {
+		e.target.style.backgroundColor = randomColor();
+	} else {
+		e.target.style.backgroundColor = white;
+	}
 }

@@ -1,22 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Silly Sketch</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
-<body>
-    <div  class="start">
-        <button>
-            Grid Size
-        </button>
-    </div>
 
-    <div class="container">   
-        <div class="grid"></div> 
-    </div>
+<body>
+    <header>
+        <h1>Silly Sketch</h1>
+    </header>
+
+    <main class="container">
+        <section class="settings">
+            <ul>
+                <li><input type="color" id="color1"></input></li>
+                <li><button type="button" id="color-btn">Color Mode</button></li>
+                <li><button type="button" id="rainbow-btn">Rainbow Mode</button></li>
+                <li><button type="button" id="eraser-btn">Eraser Mode</button></li>
+                <li><button type="button" id="clear-btn">Clear</button></li>
+                <label for="size">16x16</label>
+                <input type="range" id="size" name="size" min="2" max="100" value="16">
+            </ul>
+        </section>
+        <section class="grid-container"></section>
+
+    </main>
 </body>
+
 </html>
